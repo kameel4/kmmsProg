@@ -1,7 +1,0 @@
-# ninja log v6
-31	389	7619316113366103	CMakeFiles/MultiLevelMenu.dir/src/main.cpp.obj	e3645db9c9cfc3d4
-389	478	7619316116937551	MultiLevelMenu.exe	41b472fd2feb1177
-36	378	7619316113406132	CMakeFiles/MultiLevelMenu.dir/src/actions.cpp.obj	feba14aa494e5b53
-29	359	7619317540598936	CMakeFiles/MultiLevelMenu.dir/src/actions.cpp.obj	feba14aa494e5b53
-25	372	7619317540554125	CMakeFiles/MultiLevelMenu.dir/src/main.cpp.obj	e3645db9c9cfc3d4
-372	459	7619317544030153	MultiLevelMenu.exe	41b472fd2feb1177
