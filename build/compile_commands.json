@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/include -g -std=gnu++17 -o CMakeFiles\\MultiLevelMenu.dir\\src\\main.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\src\\main.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\src\\main.cpp",
+  "output": "CMakeFiles\\MultiLevelMenu.dir\\src\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/include -g -std=gnu++17 -o CMakeFiles\\MultiLevelMenu.dir\\src\\actions.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\src\\actions.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\src\\actions.cpp",
+  "output": "CMakeFiles\\MultiLevelMenu.dir\\src\\actions.cpp.obj"
+}
+]

@@ -1,0 +1,3 @@
+C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/CMakeFiles/MultiLevelMenu.dir
+C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/CMakeFiles/edit_cache.dir
+C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/CMakeFiles/rebuild_cache.dir
