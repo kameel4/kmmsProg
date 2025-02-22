@@ -2,13 +2,13 @@
 #include "actions.hpp"
 
 
-menu::menu_node artist_1 = {"Андрей Иванов сын Рублев"};
-menu::menu_node artist_2 = {"Василий Дмитриевич Поленов"}; 
-menu::menu_node artist3 = {"Иван Константинович Айвазовский"};
+menu::menu_node artist_1 = {"РђРЅРґСЂРµР№ РРІР°РЅРѕРІ СЃС‹РЅ Р СѓР±Р»РµРІ"};
+menu::menu_node artist_2 = {"Р’Р°СЃРёР»РёР№ Р”РјРёС‚СЂРёРµРІРёС‡ РџРѕР»РµРЅРѕРІ"}; 
+menu::menu_node artist3 = {"РРІР°РЅ РљРѕРЅСЃС‚Р°РЅС‚РёРЅРѕРІРёС‡ РђР№РІР°Р·РѕРІСЃРєРёР№"};
 
-menu::menu_node russian_artists = {"Русские художники", "Третий уровень Русские художники", nullptr, {&artist_1, &artist_2, &artist3}, *node_actions::universal_action};
-menu::menu_node russian_musicians = {"Русские музыканты", "Третий уровень Русские музыканты", nullptr, {}, *node_actions::universal_action};
+menu::menu_node russian_artists = {"Р СѓСЃСЃРєРёРµ С…СѓРґРѕР¶РЅРёРєРё", "РўСЂРµС‚РёР№ СѓСЂРѕРІРµРЅСЊ Р СѓСЃСЃРєРёРµ С…СѓРґРѕР¶РЅРёРєРё", nullptr, {&artist_1, &artist_2, &artist3}, *node_actions::universal_action};
+menu::menu_node russian_musicians = {"Р СѓСЃСЃРєРёРµ РјСѓР·С‹РєР°РЅС‚С‹", "РўСЂРµС‚РёР№ СѓСЂРѕРІРµРЅСЊ Р СѓСЃСЃРєРёРµ РјСѓР·С‹РєР°РЅС‚С‹", nullptr, {}, *node_actions::universal_action};
 
-menu::menu_node russian_art =  {"Искусство России", "Второй уровень меню: ", nullptr, {&russian_artists, &russian_musicians}, *node_actions::universal_action};
+menu::menu_node russian_art =  {"РСЃРєСѓСЃСЃС‚РІРѕ Р РѕСЃСЃРёРё", "Р’С‚РѕСЂРѕР№ СѓСЂРѕРІРµРЅСЊ РјРµРЅСЋ: ", nullptr, {&russian_artists, &russian_musicians}, *node_actions::universal_action};
 
-menu::menu_node zero_level = {"", "Главное меню", nullptr, {&russian_art}, *node_actions::universal_action};
+menu::menu_node zero_level = {"", "Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ", nullptr, {&russian_art}, *node_actions::universal_action};

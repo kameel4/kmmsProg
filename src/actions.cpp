@@ -12,7 +12,7 @@ void node_actions::show_children(menu::menu_node* noda){
     for (menu::menu_node* child: children){
         std::cout<<i++<<". "<<child->name<<std::endl;
     }
-    std::cout<<"0. Íàçàä"<<std::endl;
+    std::cout<<"0. ÐÐ°Ð·Ð°Ð´"<<std::endl;
 }
 
 menu::menu_node* node_actions::go_further(menu::menu_node* noda){
