@@ -1,10 +1,7 @@
-cmake_minimum_required(VERSION 3.16)
-
-set(CMAKE_CXX_STANDARD 17)
 SET(CMAKE_CXX_FLAGS "-finput-charset=utf-8 -fexec-charset=cp866")
 
 
-project(MultiLevelMenu LANGUAGES CXX)
+project(MultiLevelMenu)
 
 set(SOURCES
     src/main.cpp
