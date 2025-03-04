@@ -1,4 +1,4 @@
-#include "linearSort/linearSort.hpp"
+#include "linearSort.hpp"
 
 // void compare_time(vector<long long> unsorted);
 // vector <long long> random_vector(int N);
