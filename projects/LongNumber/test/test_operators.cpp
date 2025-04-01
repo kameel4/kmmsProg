@@ -26,8 +26,8 @@ TEST(LongNumber, test_summation) {
     b = "-22";
     c = "100";
 
-    cout<< "\n\na: "<<a<<" b: "<<b<<" c: "<<c<<endl;
-    cout<< "a.length: "<<a.get_digits_number()<<" b.length: "<<b.get_digits_number()<<" c.length: "<<c.get_digits_number()<<"\n\n"<<endl;
+    // cout<< "\n\na: "<<a<<" b: "<<b<<" c: "<<c<<endl;
+    // cout<< "a.length: "<<a.get_digits_number()<<" b.length: "<<b.get_digits_number()<<" c.length: "<<c.get_digits_number()<<"\n\n"<<endl;
     ASSERT_EQ(c, a + b);
 
     a = "122";
@@ -60,19 +60,45 @@ TEST(LongNumber, test_subtraction) {
 
 }
 
-// TEST(LongNumber, test_multiplication) {
-//     LongNumber a = "123";
-//     LongNumber b = "456";
-//     LongNumber c = "56088";
-//     ASSERT_EQ(c, a * b);
-// }
+TEST(LongNumber, test_multiplication) {
+    LongNumber a("123");
+    LongNumber b("456");
+    LongNumber c("56088");
+    ASSERT_EQ(c, a * b);
 
-// TEST(LongNumber, test_division) {
-//     LongNumber a = "169";
-//     LongNumber b = "13";
-//     LongNumber c = "13";
-//     ASSERT_EQ(c, a / b);
-// }
+    a = "123";
+    b = "0";
+    c = "0";
+    ASSERT_EQ(c, a * b);
+
+    a = "-123";
+    b = "12345";
+    c = "-1518435";
+
+    // cout<< "\n\na: "<<a<<" b: "<<b<<" c: "<<c<<endl;
+    // cout<< "a.length: "<<a.get_digits_number()<<" b.length: "<<b.get_digits_number()<<" c.length: "<<c.get_digits_number()<<"\n\n"<<endl;
+
+    ASSERT_EQ(c, a * b);
+
+    a = "1";
+    b = "1";
+    c = "1";
+    ASSERT_EQ(c, a * b);
+
+
+}
+
+TEST(LongNumber, test_division) {
+    LongNumber a("15");
+    LongNumber b("4");
+    LongNumber c("3");
+    ASSERT_EQ(c, a / b);
+
+    // a = "0";
+    // b = "69";
+    // c = "0";
+    // ASSERT_EQ(c, a / b);
+}
 
 // TEST(LongNumber, test_modulo) {
 //     LongNumber a = "136";

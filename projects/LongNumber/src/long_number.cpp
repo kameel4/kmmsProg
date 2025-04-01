@@ -134,7 +134,11 @@ bool LongNumber::operator > (const LongNumber& x) const {
 }
 
 bool LongNumber::operator < (const LongNumber& x) const {
-    return !(*this > x);
+    return !(*this > x || *this == x);
+}
+
+bool LongNumber::operator >= (const LongNumber& x) const {
+    return !(*this < x);
 }
 
 LongNumber LongNumber::operator + (const LongNumber& x) const {
@@ -212,43 +216,54 @@ LongNumber LongNumber::operator * (const LongNumber& x) const {
     LongNumber result;
     result.length = length + x.length;
     result.numbers = new int[result.length]{0};
+
     for (int i = 0; i < length; ++i) {
-        for (int j = 0; j < x.length; ++j) {
-            result.numbers[i + j] += numbers[i] * x.numbers[j];
+        int carry = 0;
+        for (int j = 0; j < x.length || carry; ++j) {
+            long long current = result.numbers[i + j] +
+                numbers[i] * (j < x.length ? x.numbers[j] : 0) + carry;
+            result.numbers[i + j] = current % 10;
+            carry = current / 10;
         }
     }
-    for (int i = 0; i < result.length - 1; ++i) {
-        result.numbers[i + 1] += result.numbers[i] / 10;
-        result.numbers[i] %= 10;
-    }
-    // Remove leading zeros
+
     while (result.length > 1 && result.numbers[result.length - 1] == 0) {
         result.length--;
     }
-    result.sign = (sign == x.sign ? 1 : -1);
+
+    result.sign = (sign == x.sign) ? 1 : -1;
     return result;
 }
 
-LongNumber LongNumber::operator / (const LongNumber& x) const {
-    if (x == 0) {
-        throw overflow_error("Division by zero");
+LongNumber LongNumber::operator/(const LongNumber& x) const {
+    LongNumber result;
+    // if dividend is zero or less than divisor
+    if ((length == 1 && numbers[0] == 0) || *this < x) {
+        return LongNumber("0");
+    }
+    // if divisor is zero
+    if (x.length == 1 && x.numbers[0] == 0) {
+        throw runtime_error("Division by zero");
     }
 
-    LongNumber result;
     result.length = length;
     result.numbers = new int[result.length];
     int remainder = 0;
     for (int i = length - 1; i >= 0; --i) {
-        int dividend = remainder * 10 + numbers[i];
-        result.numbers[i] = dividend / x.numbers[0];
-        remainder = dividend % x.numbers[0];
+        long long current = numbers[i] + remainder * 10;
+        result.numbers[i] = current / x.numbers[0];
+        remainder = current % x.numbers[0];
     }
     
+    //reverse the result
+    for (int i = 0; i < result.length / 2; ++i) {
+        swap(result.numbers[i], result.numbers[result.length - 1 - i]);
+    }
     
+    //removing leading zeros
     while (result.length > 1 && result.numbers[result.length - 1] == 0) {
         result.length--;
     }
-    result.sign = (sign == x.sign ? 1 : -1);
     return result;
 }
 
