@@ -13,6 +13,7 @@ LongNumber::LongNumber(const char* const str) {
     
     if (str[0] == '-') {
         sign = -1;
+        length--;
     }else{
         sign = 1;
     }
@@ -50,9 +51,19 @@ LongNumber::~LongNumber() {
 
 LongNumber& LongNumber::operator = (const char* const str) {
         delete[] numbers;
-        length = get_length(str);
+        // if zero 
+        if (str[0] == '0' && str[1] == '\0') {
+            length = 1;
+            sign = 1;
+            numbers = new int[length];
+            numbers[0] = 0;
+            return *this;
+        }
+        
+        length = strlen(str);
         if (str[0] == '-') {
             sign = -1;
+            length--;
         }else{
             sign = 1;
         }
@@ -60,6 +71,12 @@ LongNumber& LongNumber::operator = (const char* const str) {
         for (int i = 0; i < length; i++) {
             numbers[i] = (str[i + (sign == -1)] - '0');
         }
+
+        for (int i = 0; i < length / 2; ++i) {
+            swap(numbers[i], numbers[length - i - 1]);
+        }
+
+        return *this;
     
 }
 
@@ -71,7 +88,7 @@ LongNumber& LongNumber::operator = (const LongNumber& x ){
             for (int i = 0; i < length; i++) {
                 numbers[i] = x.numbers[i];
             }
-    
+    return *this;
 }
 
 LongNumber& LongNumber::operator = (LongNumber&& x) {
@@ -79,6 +96,7 @@ LongNumber& LongNumber::operator = (LongNumber&& x) {
             sign = x.sign;
             numbers = x.numbers;
             x.numbers = nullptr;
+            return *this;
 }
 
 bool LongNumber::operator == (const LongNumber& x) const {
@@ -121,55 +139,72 @@ bool LongNumber::operator < (const LongNumber& x) const {
 
 LongNumber LongNumber::operator + (const LongNumber& x) const {
     LongNumber result;
-    result.length = max(length, x.length);
-    result.numbers = new int[result.length];
-    int carry = 0;
-    for (int i = 0; i < result.length; ++i) {
-        int sum = (i < length ? numbers[i] : 0) +
-                  (i < x.length ? x.numbers[i] : 0) +
-                  carry;
-        result.numbers[i] = sum % 10;
-        carry = sum / 10;
+
+    if (sign == x.sign) {
+        result.length = max(length, x.length);
+        result.numbers = new int[result.length];
+        int carry = 0;
+        for (int i = 0; i < result.length; ++i) {
+            int sum = (i < length ? numbers[i] : 0) +
+                      (i < x.length ? x.numbers[i] : 0) +
+                      carry;
+            result.numbers[i] = sum % 10;
+            carry = sum / 10;
+        }
+        result.sign = sign;
+        return result;
     }
-    if (carry > 0) {
-        ++result.length;
-        result.numbers[result.length - 1] = carry;
+    else {
+        LongNumber positive, negative, reduced, substructed;
+        if (*this > x) {
+            positive = *this;
+            negative = x;
+        } else {
+            positive = x;
+            negative = *this;
+        }
+        
+        negative.sign = 1;
+
+        if (positive > negative) {
+            reduced = positive;
+            substructed = negative;
+            result.sign = 1;
+        } else {
+            reduced = negative;
+            substructed = positive;
+            result.sign = -1;
+        }
+
+        result.length = reduced.length;
+        result.numbers = new int[result.length];
+        
+        int borrow = 0;
+        for (int i = 0; i < result.length || borrow; ++i) {
+            int diff = reduced.numbers[i] - borrow - ((i < substructed.length) ? substructed.numbers[i] : 0);
+            if (diff < 0) {
+                diff += 10;
+                borrow = 1;
+            } else {
+                borrow = 0;
+            }
+            result.numbers[i] = diff;
+        }
+
+        // Remove leading zeros
+        while (result.length > 1 && result.numbers[result.length - 1] == 0) {
+            result.length--;
+        }
+        return result;
     }
-    result.sign = (sign == x.sign ? sign : 1);
-    return result;
 }
 
 LongNumber LongNumber::operator - (const LongNumber& x) const {
-    LongNumber result;
-    if (*this == x) {
-        result = LongNumber("0");
-        return result;
-    }
+    LongNumber redused = *this;
+    LongNumber substructed = x;
+    substructed.sign *=-1;
 
-    // Assuming `*this` is larger than `x` for subtraction
-    result.length = max(length, x.length);
-    result.numbers = new int[result.length];
-    int borrow = 0;
-    for (int i = 0; i < result.length; ++i) {
-        int diff = (i < length ? numbers[i] : 0) -
-                   (i < x.length ? x.numbers[i] : 0) -
-                   borrow;
-        if (diff < 0) {
-            diff += 10;
-            borrow = 1;
-        } else {
-            borrow = 0;
-        }
-        result.numbers[i] = diff;
-    }
-
-    // Remove leading zeros
-    while (result.length > 1 && result.numbers[result.length - 1] == 0) {
-        result.length--;
-    }
-
-    result.sign = (sign == x.sign) ? sign : 1;
-    return result;
+    return redused + substructed;
 
 }
 
