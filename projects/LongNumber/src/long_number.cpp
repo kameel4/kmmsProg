@@ -199,6 +199,10 @@ LongNumber LongNumber::operator + (const LongNumber& x) const {
         while (result.length > 1 && result.numbers[result.length - 1] == 0) {
             result.length--;
         }
+
+        if (result.length == 1 && result.numbers[0] == 0) {
+            result.sign = 1;
+        }
         return result;
     }
 }
@@ -237,38 +241,50 @@ LongNumber LongNumber::operator * (const LongNumber& x) const {
 
 LongNumber LongNumber::operator/(const LongNumber& x) const {
     LongNumber result;
-    // if dividend is zero or less than divisor
-    if ((length == 1 && numbers[0] == 0) || *this < x) {
-        return LongNumber("0");
-    }
-    // if divisor is zero
-    if (x.length == 1 && x.numbers[0] == 0) {
-        throw runtime_error("Division by zero");
+    result.length = length;
+    result.numbers = new int[result.length]{0};
+    result.sign = (sign == x.sign) ? 1 : -1;
+
+    LongNumber dividend = *this;
+    dividend.sign = 1;
+    LongNumber divisor = x;
+    divisor.sign = 1;
+
+    if (dividend < divisor) {
+        result = "0";
+        return result;
     }
 
-    result.length = length;
-    result.numbers = new int[result.length];
-    int remainder = 0;
-    for (int i = length - 1; i >= 0; --i) {
-        long long current = numbers[i] + remainder * 10;
-        result.numbers[i] = current / x.numbers[0];
-        remainder = current % x.numbers[0];
+    LongNumber current("0");
+    LongNumber ten = "10";
+    for (int i = dividend.length - 1; i >= 0; --i) {
+        current = (current * ten) + LongNumber(to_string(dividend.numbers[i]).c_str());
+        int digit = 0;
+        while (current >= divisor) {
+            current = current - divisor;
+            ++digit;
+        }
+        result.numbers[i] = digit;
     }
-    
-    //reverse the result
-    for (int i = 0; i < result.length / 2; ++i) {
-        swap(result.numbers[i], result.numbers[result.length - 1 - i]);
-    }
-    
-    //removing leading zeros
+
     while (result.length > 1 && result.numbers[result.length - 1] == 0) {
-        result.length--;
+        --result.length;
     }
+
     return result;
+
 }
 
 LongNumber LongNumber::operator % (const LongNumber& x) const {
-    LongNumber result = *this - (*this / x) * x;
+    LongNumber copy = *this;
+    cout<<"\n copy:"<<copy<<endl;
+    LongNumber integer_part = copy / x;
+    cout<<"\n integer_part:"<<integer_part<<endl;
+    LongNumber quotient = integer_part * x;
+    cout<<"\n quotient:"<<quotient<<endl;
+    LongNumber result = copy - quotient;
+    cout<<"\n result:"<<result<<endl;
+    result.sign = 1;
     return result;
 }
 

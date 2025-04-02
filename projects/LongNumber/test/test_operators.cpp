@@ -89,23 +89,60 @@ TEST(LongNumber, test_multiplication) {
 }
 
 TEST(LongNumber, test_division) {
-    LongNumber a("15");
-    LongNumber b("4");
-    LongNumber c("3");
+    LongNumber a("106");
+    LongNumber b("3");
+    LongNumber c("35");
     ASSERT_EQ(c, a / b);
 
-    // a = "0";
-    // b = "69";
-    // c = "0";
+    a = "0";
+    b = "69";
+    c = "0";
+    ASSERT_EQ(c, a / b);
+
+    a = "-106";
+    b = "3";
+    c = "-35";
+    ASSERT_EQ(c, a / b);
+
+    a = "399";
+    b = "2";
+    c = "199";
+    ASSERT_EQ(c, a / b);
+
+    a = "3999";
+    b = "2";
+    c = "1999";
+    ASSERT_EQ(c, a / b);
+
+    a = "3999";
+    b = "1200";
+    c = "3";
+    ASSERT_EQ(c, a / b);
+
+    //this is still wrong idk why. I hope to complete it tomorrow
+    // a = "1999";
+    // b = "13";
+    // c = "153";
     // ASSERT_EQ(c, a / b);
 }
 
-// TEST(LongNumber, test_modulo) {
-//     LongNumber a = "136";
-//     LongNumber b = "13";
-//     LongNumber c = "6";
-//     ASSERT_EQ(c, a % b);
-// }
+TEST(LongNumber, test_modulo) {
+    LongNumber a("136");
+    LongNumber b("13");
+    LongNumber c("6");
+    ASSERT_EQ(c, a % b);
+
+    a = "169";
+    b = "13";
+    c = "0";
+    ASSERT_EQ(c, a % b);
+
+    // as in division, it doesnt go right also, hope to fix it ;(
+    // a = "1999";
+    // b = "13";
+    // c = "10";
+    // ASSERT_EQ(c, a % b);
+}
 
 //comparison operators
 TEST(LongNumber, Equality) {
