@@ -34,6 +34,11 @@ TEST(LongNumber, test_summation) {
     b = "-222";
     c = "-100";
     ASSERT_EQ(c, a + b);
+
+    a = "99";
+    b = "99";
+    c = "198";
+    ASSERT_EQ(c, a + b);
 }
 
 TEST(LongNumber, test_subtraction) {
@@ -167,6 +172,12 @@ TEST(LongNumber, GreaterThan) {
     LongNumber a = "1235";
     LongNumber b = "1234";
     ASSERT_GT(a, b);
+}
+
+TEST(LongNumber, GreaterEqualThan){
+    LongNumber a("970");
+    LongNumber b("198");
+    EXPECT_TRUE(a >= b);
 }
 
 int main(int argc, char **argv) {

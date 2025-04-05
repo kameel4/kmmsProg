@@ -124,7 +124,8 @@ bool LongNumber::operator > (const LongNumber& x) const {
     if (length != x.length) {
         return (sign == 1) ? (length > x.length) : (length < x.length);
     }
-    for (int i = 0; i < length; ++i) {
+    for (int i = length-1; i >= 0; --i) {
+        // cout<<"n:1 "<<numbers[i]<<" num2: "<< x.numbers[i]<<endl;
         if (numbers[i] != x.numbers[i]) {
             return (sign == 1) ? (numbers[i] > x.numbers[i]) : (numbers[i] < x.numbers[i]);
         }
@@ -134,7 +135,12 @@ bool LongNumber::operator > (const LongNumber& x) const {
 }
 
 bool LongNumber::operator < (const LongNumber& x) const {
-    return !(*this > x || *this == x);
+    bool isgreater = *this > x;
+    bool isequal = *this == x;
+    // cout<<"this: "<<*this<<"    x: "<< x<<endl;
+    // cout<<"is greater: "<<isgreater<<endl;
+    // cout<<"is equal: "<< isequal<<endl<<endl<<endl;
+    return !(isgreater || isequal);
 }
 
 bool LongNumber::operator >= (const LongNumber& x) const {
@@ -145,7 +151,7 @@ LongNumber LongNumber::operator + (const LongNumber& x) const {
     LongNumber result;
 
     if (sign == x.sign) {
-        result.length = max(length, x.length);
+        result.length = max(length, x.length) + 1;
         result.numbers = new int[result.length];
         int carry = 0;
         for (int i = 0; i < result.length; ++i) {
@@ -156,6 +162,12 @@ LongNumber LongNumber::operator + (const LongNumber& x) const {
             carry = sum / 10;
         }
         result.sign = sign;
+                    
+        // Remove leading zeros
+        while (result.length > 1 && result.numbers[result.length - 1] == 0) {
+            result.length--;
+        }
+
         return result;
     }
     else {
@@ -242,7 +254,7 @@ LongNumber LongNumber::operator * (const LongNumber& x) const {
 LongNumber LongNumber::operator/(const LongNumber& x) const {
     LongNumber result;
     result.length = length;
-    result.numbers = new int[result.length]{0};
+    result.numbers = new int[result.length];
     result.sign = (sign == x.sign) ? 1 : -1;
 
     LongNumber dividend = *this;
@@ -255,15 +267,21 @@ LongNumber LongNumber::operator/(const LongNumber& x) const {
         return result;
     }
 
+    // cout<<"\n dividend: "<<dividend<<" divisor: "<<divisor<<endl;
+
     LongNumber current("0");
-    LongNumber ten = "10";
+    LongNumber ten("10");
     for (int i = dividend.length - 1; i >= 0; --i) {
+
         current = (current * ten) + LongNumber(to_string(dividend.numbers[i]).c_str());
+        // cout<<"current: "<<current<<" divisor: "<<divisor<<endl;
         int digit = 0;
         while (current >= divisor) {
-            current = current - divisor;
+            current = (current - divisor);
+            // cout<<"reduced current: "<<current<<endl;
             ++digit;
         }
+        // cout<<"digit: "<<digit<<endl;
         result.numbers[i] = digit;
     }
 
@@ -271,21 +289,38 @@ LongNumber LongNumber::operator/(const LongNumber& x) const {
         --result.length;
     }
 
+    // cout<<"result: "<<result<<endl<<endl<<endl;
     return result;
 
 }
 
 LongNumber LongNumber::operator % (const LongNumber& x) const {
     LongNumber copy = *this;
-    cout<<"\n copy:"<<copy<<endl;
-    LongNumber integer_part = copy / x;
-    cout<<"\n integer_part:"<<integer_part<<endl;
-    LongNumber quotient = integer_part * x;
-    cout<<"\n quotient:"<<quotient<<endl;
-    LongNumber result = copy - quotient;
-    cout<<"\n result:"<<result<<endl;
-    result.sign = 1;
-    return result;
+    LongNumber copyx = x;
+    LongNumber integer_part, quotient, result;
+    if (sign == 1 && x.sign == 1){
+        integer_part = copy / x;
+        quotient = integer_part * x;
+        result = copy - quotient;
+        return result;
+    }else if (sign == -1 && x.sign == 1){
+        integer_part = (copy / x) - LongNumber("1");
+        // cout<<"\ninteger part: "<<integer_part<<endl;
+        quotient = integer_part * x;
+        result = copy - quotient;
+        return result;
+    }else if(sign == 1 && x.sign == -1){
+        integer_part = copy / x;
+        quotient = integer_part * x;
+        result = copy - quotient;
+        return result;
+    }else{
+        integer_part = (copy / x) + LongNumber("1");
+        quotient = integer_part * x;
+        result = copy - quotient;
+        return result;
+    }
+
 }
 
 int LongNumber::get_digits_number() const noexcept {
