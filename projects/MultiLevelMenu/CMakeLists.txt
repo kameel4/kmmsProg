@@ -13,4 +13,4 @@ add_executable(MultiLevelMenu ${SOURCES})
 target_include_directories(MultiLevelMenu
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    )
+)
