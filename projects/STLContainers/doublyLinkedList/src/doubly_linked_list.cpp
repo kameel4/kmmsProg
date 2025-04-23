@@ -17,8 +17,8 @@ DoublyLinkedList<T>::~DoublyLinkedList() {
 }
 
 template<typename T>
-std::size_t DoublyLinkedList<T>::get_size() const noexcept {
-    std::size_t size = 0;
+size_t DoublyLinkedList<T>::get_size() const noexcept {
+    size_t size = 0;
     Node* current = begin;
     while (current != nullptr) {
         size++;
@@ -43,10 +43,10 @@ template<typename T>
 void DoublyLinkedList<T>::print() const noexcept {
     Node* current = begin;
     while (current != nullptr) {
-        std::cout << current->value << " ";
+        cout << current->value << " ";
         current = current->next;
     }
-    std::cout << std::endl;
+    cout << endl;
 
 }
 

@@ -1,5 +1,5 @@
 project(doublyLinkedList LANGUAGES CXX)
 
-# add_library(long_number_lib "")
+add_library(doubly_linked_list_lib "")
 
 add_subdirectory(src)

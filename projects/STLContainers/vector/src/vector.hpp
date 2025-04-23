@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstddef>
+
+using namespace std;
 		
 namespace biv {
 	template <typename T> 
