@@ -16,8 +16,11 @@ namespace biv {
 
 		public:
 			Vector();
+			Vector(const T* array, size_t array_size);
+
 			Vector(const Vector&) = delete;
 			Vector& operator = (const Vector&) = delete;
+			bool operator == (const Vector<T>& other) const noexcept;
 			~Vector();
 			
 			std::size_t get_size() const noexcept;

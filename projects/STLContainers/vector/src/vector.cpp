@@ -4,14 +4,40 @@
 
 using biv::Vector;
 
+template <typename T>
+const std::size_t biv::Vector<T>::START_CAPACITY = 32;
+
 template<typename T>
 Vector<T>::Vector() {
 	arr = new T[capacity];
 }
 
 template<typename T>
+Vector<T>::Vector(const T* array, size_t array_size){
+	capacity = array_size;
+    size = array_size;
+    arr = new T[capacity];
+    for (std::size_t i = 0; i < size; ++i) {
+        arr[i] = array[i];
+    }
+}
+
+template<typename T>
 Vector<T>::~Vector() {
 	delete[] arr;
+}
+
+template<typename T>
+bool Vector<T>::operator==(const Vector<T>& other) const noexcept {
+	if (size != other.size) {
+		return false;
+	}
+	for (int i = 0; i < size; ++i) {
+		if (arr[i] != other.arr[i]) {
+			return false;
+		}
+	}
+	return true;
 }
 
 template<typename T>
