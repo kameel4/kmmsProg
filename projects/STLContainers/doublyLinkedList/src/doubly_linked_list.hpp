@@ -24,11 +24,14 @@ namespace biv {
 
 		public:
 			DoublyLinkedList() noexcept {};
+			
+			DoublyLinkedList(const T* array, size_t array_size);
 			DoublyLinkedList(const DoublyLinkedList&) = delete;
 			DoublyLinkedList& operator = (const DoublyLinkedList&) = delete;
+			bool operator == (const DoublyLinkedList<T>& other) const noexcept;
 			~DoublyLinkedList();
 			
-			std::size_t get_size() const noexcept;
+			size_t get_size() const noexcept;
 			bool has_item(const T& value) const noexcept;
 			void print() const noexcept;
 			void push_back(const T& value);

@@ -4,6 +4,36 @@
 
 using biv::DoublyLinkedList;
 
+
+template<typename T>
+DoublyLinkedList<T>::DoublyLinkedList(const T* array, size_t array_size) : begin(nullptr), end(nullptr) {
+    Node** current = &begin;
+    for (size_t i = 0; i < array_size; ++i) {
+        *current = new Node(array[i]);
+        if (i == 0) {
+            end = *current;
+        } else {
+            (*current)->prev = *(current - 1);
+            (*(current - 1))->next = *current;
+        }
+        ++current;
+    }
+}
+
+template<typename T>
+bool DoublyLinkedList<T>::operator == (const DoublyLinkedList<T>& other) const noexcept {
+    Node* current = begin;
+    Node* other_current = other.begin;
+    while (current != nullptr && other_current != nullptr) {
+        if (current->value != other_current->value) {
+            return false;
+        }
+        current = current->next;
+        other_current = other_current->next;
+    }
+    return current == nullptr && other_current == nullptr;
+}
+
 template<typename T>
 DoublyLinkedList<T>::~DoublyLinkedList() {
     Node* current = begin;
