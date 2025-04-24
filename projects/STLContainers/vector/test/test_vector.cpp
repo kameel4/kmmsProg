@@ -30,6 +30,71 @@ TEST(Vector, test_pushing_back) {
 	ASSERT_EQ(string_vector, expected_string_vector);
 }
 
+TEST(Vector, test_inserting){
+	int to_insert_arr[4] = {1, 2, 4, 5};
+	Vector<int> to_insert(to_insert_arr, sizeof(to_insert_arr)/sizeof(to_insert_arr[0]));
+	int expected_arr[5] = {1, 2, 3, 4, 5};
+	Vector<int> expected(expected_arr, sizeof(expected_arr)/sizeof(expected_arr[0]));
+	bool has_inserted;
+
+	has_inserted = to_insert.insert(2, 3);
+	// to_insert.print();
+
+	EXPECT_EQ(to_insert, expected);
+	EXPECT_EQ(has_inserted, true);
+
+	has_inserted = to_insert.insert(69, 69);
+
+	EXPECT_EQ(has_inserted, false);
+
+}
+
+TEST(Vector, test_getting_size){
+	EXPECT_EQ(Vector<int>().get_size(), 0);
+	int length_five[5] = {56, 8, 9, 76, 38};
+	EXPECT_EQ(Vector<int>(length_five, sizeof(length_five)/sizeof(length_five[0])).get_size(), 5);
+}
+
+TEST(Vector, test_item_presence){
+	int arr[5] = {1, 2, 3, 4, 5};
+	Vector<int> vec(arr, 5);
+
+	EXPECT_EQ(vec.has_item(3), true);
+	EXPECT_EQ(vec.has_item(69), false);
+}
+
+TEST(Vector, test_removing_first_elem){
+	int arr[5] = {1, 2, 3, 4, 5};
+	Vector<int> vec(arr, 5);
+
+	// removing an existing elem
+	bool is_removed = vec.remove_first(3);
+	EXPECT_EQ(is_removed, true);
+	int expected_arr1[4] = {1, 2, 4, 5};
+	Vector<int> expected_vec1(expected_arr1, 4);
+	EXPECT_EQ(vec, expected_vec1);
+
+	// removing a non-existing elem
+	is_removed = vec.remove_first(10);
+	EXPECT_EQ(is_removed, false);
+	EXPECT_EQ(vec, expected_vec1);
+
+	// removing the first elem
+	is_removed = vec.remove_first(1);
+	EXPECT_EQ(is_removed, true);
+	int expected_arr2[3] = {2, 4, 5};
+	Vector<int> expected_vec2(expected_arr2, 3);
+	EXPECT_EQ(vec, expected_vec2);
+
+	// removing the last
+	is_removed = vec.remove_first(5);
+	EXPECT_EQ(is_removed, true);
+	int expected_arr3[2] = {2, 4};
+	Vector<int> expected_vec3(expected_arr3, 2);
+	EXPECT_EQ(vec, expected_vec3);
+
+}
+
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

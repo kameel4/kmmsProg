@@ -57,29 +57,31 @@ bool Vector<T>::has_item(const T& value) const noexcept {
 
 template<typename T>
 bool Vector<T>::insert(const size_t position, const T& value) {
-	if (position > size) {
+	if (position > size || position < 0) {
 		return false;
 	}
 
 	if (size == capacity) {
 		capacity *= 2;
 		T* temp = new T[capacity];
-		for (int i = 0, j = 0; i < size + 1; ++i) {
+		for (int i = 0, j = 0; i < size + 1; i++) {
 			if (i == position) {
 				temp[i] = value;
 			}
 			else {
+				cout<<"arr[j]: "<< arr[j]<<endl;
 				temp[i] = arr[j++];
+
 			}
 		}
 		delete[] arr;
 		arr = temp;
 	}
 
-	for (int i = size; i > position; --i) {
-		arr[i] = arr[i - 1];
-	}
-	arr[position] = value;
+	// for (int i = size; i > position; --i) {
+	// 	arr[i + 1] = arr[i];
+	// }
+	// arr[position] = value;
 	++size;
 	return true;
 }
