@@ -100,13 +100,23 @@ bool DoublyLinkedList<T>::remove_first(const T& value) noexcept {
             if (current->prev != nullptr) {
                 current->prev->next = current->next;
             } else {
-                begin = current->next;
+                if (this->get_size() != 1){
+                    begin = current->next;}
+                else{
+                    begin = nullptr;
+                    end = nullptr;
+                }
             }
 
             if (current->next != nullptr) {
                 current->next->prev = current->prev;
             } else {
-                end = current->prev;
+                if (this->get_size() != 1){
+                    end = current->prev;
+                }else{
+                    begin = nullptr;
+                    end = nullptr;
+                }
             }
 
             delete current;

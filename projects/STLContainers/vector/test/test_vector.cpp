@@ -95,6 +95,23 @@ TEST(Vector, test_removing_first_elem){
 
 }
 
+TEST(Vector, test_resizing){
+	Vector<int> vec;
+	EXPECT_EQ(vec.get_capacity(), 32);
+	// cout<<"start capacity: "<<vec.get_capacity()<<endl;
+	for (int i = 0; i<33; i++){
+		vec.push_back(i);
+	}
+	EXPECT_EQ(vec.get_capacity(), 64);
+
+	// cout<< "after pushing capacity: "<< vec.get_capacity()<<endl;
+	for (int i = 0; i < 10; i++){
+		vec.remove_first(i);
+	}
+	EXPECT_EQ(vec.get_capacity(), 32);
+	// cout<< "after removing capacity: "<< vec.get_capacity()<<endl;
+}
+
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

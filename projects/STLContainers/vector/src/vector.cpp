@@ -8,6 +8,17 @@ template <typename T>
 const std::size_t biv::Vector<T>::START_CAPACITY = 32;
 
 template<typename T>
+void Vector<T>::shrink(){
+	capacity = capacity /2;
+	T* temp = new T[capacity];
+	for (int i = 0; i < size; i++){
+		temp[i] = arr[i];
+	}
+	delete[] arr;
+	arr = temp;
+}
+
+template<typename T>
 Vector<T>::Vector() {
 	arr = new T[capacity];
 }
@@ -25,6 +36,7 @@ Vector<T>::Vector(const T* array, size_t array_size){
 template<typename T>
 Vector<T>::~Vector() {
 	delete[] arr;
+	capacity = START_CAPACITY;
 }
 
 template<typename T>
@@ -43,6 +55,11 @@ bool Vector<T>::operator==(const Vector<T>& other) const noexcept {
 template<typename T>
 size_t Vector<T>::get_size() const noexcept {
 	return size;
+}
+
+template<typename T>
+size_t Vector<T>::get_capacity() const noexcept {
+	return capacity;
 }
 
 template<typename T>
@@ -117,6 +134,9 @@ bool Vector<T>::remove_first(const T& value) {
 				arr[j] = arr[j + 1];
 			}
 			--size;
+			if (size < (capacity / 2)) {
+				this->shrink();
+			}		
 			return true;
 		}
 	}
