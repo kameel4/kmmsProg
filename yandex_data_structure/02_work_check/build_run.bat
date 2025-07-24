@@ -2,7 +2,7 @@
 chcp 1251 > log
 del log
 
-set NAME=01_template_print
+set NAME=02_work_check
 
 :: -fexec-charset-utf-8 в Windows не работает
 set CHARSET="-finput-charset=utf-8 -fexec-charset=windows-1251"

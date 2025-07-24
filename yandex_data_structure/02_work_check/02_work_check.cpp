@@ -23,6 +23,7 @@ N — номер в стопке очередной интересующей н�
 #include <deque>
 #include <fstream>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 int main(){
