@@ -1,0 +1,42 @@
+Start testing: Apr 28 23:28 RTZ 2 (çèìà)
+----------------------------------------------------------
+5/5 Testing: vector_tests
+5/5 Test: vector_tests
+Command: "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/STLContainers/vector/test/vector_tests.exe"
+Directory: C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/STLContainers/vector/test
+"vector_tests" start time: Apr 28 23:28 RTZ 2 (çèìà)
+Output:
+----------------------------------------------------------
+[==========] Running 6 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 6 tests from Vector
+[ RUN      ] Vector.test_pushing_back
+[       OK ] Vector.test_pushing_back (0 ms)
+[ RUN      ] Vector.test_inserting
+arr[j]: 1
+arr[j]: 2
+arr[j]: 4
+arr[j]: 5
+[       OK ] Vector.test_inserting (0 ms)
+[ RUN      ] Vector.test_getting_size
+[       OK ] Vector.test_getting_size (0 ms)
+[ RUN      ] Vector.test_item_presence
+[       OK ] Vector.test_item_presence (0 ms)
+[ RUN      ] Vector.test_removing_first_elem
+[       OK ] Vector.test_removing_first_elem (0 ms)
+[ RUN      ] Vector.test_resizing
+[       OK ] Vector.test_resizing (0 ms)
+[----------] 6 tests from Vector (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 6 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 6 tests.
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"vector_tests" end time: Apr 28 23:28 RTZ 2 (çèìà)
+"vector_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 28 23:28 RTZ 2 (çèìà)

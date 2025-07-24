@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "projects/STLContainers/doublyLinkedList/src",
+		"source" : "projects/STLContainers/doublyLinkedList/src"
+	}
+}

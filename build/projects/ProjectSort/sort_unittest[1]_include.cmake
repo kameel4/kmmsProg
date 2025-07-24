@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/ProjectSort/sort_unittest[1]_tests.cmake")
+  include("C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/ProjectSort/sort_unittest[1]_tests.cmake")
+else()
+  add_test(sort_unittest_NOT_BUILT sort_unittest_NOT_BUILT)
+endif()

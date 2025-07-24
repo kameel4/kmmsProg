@@ -1,0 +1,104 @@
+[
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock/include -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o projects\\lib\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googlemock\\src\\gmock-all.cc",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googlemock\\src\\gmock-all.cc",
+  "output": "projects\\lib\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o projects\\lib\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googlemock\\src\\gmock_main.cc",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googlemock\\src\\gmock_main.cc",
+  "output": "projects\\lib\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o projects\\lib\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googletest\\src\\gtest-all.cc",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googletest\\src\\gtest-all.cc",
+  "output": "projects\\lib\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o projects\\lib\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googletest\\src\\gtest_main.cc",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\lib\\googletest\\googletest\\src\\gtest_main.cc",
+  "output": "projects\\lib\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/MultiLevelMenu/include -finput-charset=utf-8 -fexec-charset=cp866 -g -o projects\\MultiLevelMenu\\CMakeFiles\\MultiLevelMenu.dir\\src\\main.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\MultiLevelMenu\\src\\main.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\MultiLevelMenu\\src\\main.cpp",
+  "output": "projects\\MultiLevelMenu\\CMakeFiles\\MultiLevelMenu.dir\\src\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/MultiLevelMenu/include -finput-charset=utf-8 -fexec-charset=cp866 -g -o projects\\MultiLevelMenu\\CMakeFiles\\MultiLevelMenu.dir\\src\\actions.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\MultiLevelMenu\\src\\actions.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\MultiLevelMenu\\src\\actions.cpp",
+  "output": "projects\\MultiLevelMenu\\CMakeFiles\\MultiLevelMenu.dir\\src\\actions.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/ProjectSort/src -g -o projects\\ProjectSort\\CMakeFiles\\linear_sort_lib.dir\\src\\linearSort.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\ProjectSort\\src\\linearSort.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\ProjectSort\\src\\linearSort.cpp",
+  "output": "projects\\ProjectSort\\CMakeFiles\\linear_sort_lib.dir\\src\\linearSort.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/ProjectSort/src -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock -g -o projects\\ProjectSort\\test\\CMakeFiles\\test_linear.dir\\test_linear.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\ProjectSort\\test\\test_linear.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\ProjectSort\\test\\test_linear.cpp",
+  "output": "projects\\ProjectSort\\test\\CMakeFiles\\test_linear.dir\\test_linear.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/LongNumber/src -g -o projects\\LongNumber\\CMakeFiles\\long_number_lib.dir\\src\\long_number.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\LongNumber\\src\\long_number.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\LongNumber\\src\\long_number.cpp",
+  "output": "projects\\LongNumber\\CMakeFiles\\long_number_lib.dir\\src\\long_number.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/LongNumber/src -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googlemock -g -o projects\\LongNumber\\test\\CMakeFiles\\test_operators.dir\\test_operators.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\LongNumber\\test\\test_operators.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\LongNumber\\test\\test_operators.cpp",
+  "output": "projects\\LongNumber\\test\\CMakeFiles\\test_operators.dir\\test_operators.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/LongNumber/src -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -o projects\\LongNumber\\test\\CMakeFiles\\ibusko_test.dir\\test_long_number.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\LongNumber\\test\\test_long_number.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\LongNumber\\test\\test_long_number.cpp",
+  "output": "projects\\LongNumber\\test\\CMakeFiles\\ibusko_test.dir\\test_long_number.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/STLContainers/doublyLinkedList/src -g -o projects\\STLContainers\\doublyLinkedList\\CMakeFiles\\doubly_linked_list_lib.dir\\src\\doubly_linked_list.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\doublyLinkedList\\src\\doubly_linked_list.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\doublyLinkedList\\src\\doubly_linked_list.cpp",
+  "output": "projects\\STLContainers\\doublyLinkedList\\CMakeFiles\\doubly_linked_list_lib.dir\\src\\doubly_linked_list.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/STLContainers/doublyLinkedList/src -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -o projects\\STLContainers\\doublyLinkedList\\test\\CMakeFiles\\doubly_linked_list_tests.dir\\test_doubly_linked_list.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\doublyLinkedList\\test\\test_doubly_linked_list.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\doublyLinkedList\\test\\test_doubly_linked_list.cpp",
+  "output": "projects\\STLContainers\\doublyLinkedList\\test\\CMakeFiles\\doubly_linked_list_tests.dir\\test_doubly_linked_list.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/STLContainers/doublyLinkedList/src -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -o projects\\STLContainers\\doublyLinkedList\\test\\CMakeFiles\\doubly_linked_list_tests.dir\\templates_doubly_linked_list.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\doublyLinkedList\\test\\templates_doubly_linked_list.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\doublyLinkedList\\test\\templates_doubly_linked_list.cpp",
+  "output": "projects\\STLContainers\\doublyLinkedList\\test\\CMakeFiles\\doubly_linked_list_tests.dir\\templates_doubly_linked_list.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/STLContainers/vector/src -g -o projects\\STLContainers\\vector\\CMakeFiles\\vector_lib.dir\\src\\vector.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\vector\\src\\vector.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\vector\\src\\vector.cpp",
+  "output": "projects\\STLContainers\\vector\\CMakeFiles\\vector_lib.dir\\src\\vector.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/STLContainers/vector/src -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -o projects\\STLContainers\\vector\\test\\CMakeFiles\\vector_tests.dir\\test_vector.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\vector\\test\\test_vector.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\vector\\test\\test_vector.cpp",
+  "output": "projects\\STLContainers\\vector\\test\\CMakeFiles\\vector_tests.dir\\test_vector.cpp.obj"
+},
+{
+  "directory": "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/STLContainers/vector/src -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest/include -isystem C:/Users/kameel/RepositoriesAndProjects/kmmsProg/semester_2/projects/lib/googletest/googletest -g -o projects\\STLContainers\\vector\\test\\CMakeFiles\\vector_tests.dir\\templates_vector.cpp.obj -c C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\vector\\test\\templates_vector.cpp",
+  "file": "C:\\Users\\kameel\\RepositoriesAndProjects\\kmmsProg\\semester_2\\projects\\STLContainers\\vector\\test\\templates_vector.cpp",
+  "output": "projects\\STLContainers\\vector\\test\\CMakeFiles\\vector_tests.dir\\templates_vector.cpp.obj"
+}
+]

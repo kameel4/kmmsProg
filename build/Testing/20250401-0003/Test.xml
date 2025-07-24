@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250401-0003-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.31.5"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="DESKTOP-OOQR339"
+	OSRelease=" Professional"
+	OSVersion=" (Build 26100)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="15"
+	ModelID="4"
+	ModelName="AMD Ryzen 7 7840HS w/ Radeon 780M Graphics"
+	ProcessorCacheSize="64"
+	NumberOfLogicalCPU="16"
+	NumberOfPhysicalCPU="8"
+	TotalVirtualMemory="20932"
+	TotalPhysicalMemory="14020"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3792"
+	>
+	<Testing>
+		<StartDateTime>Apr 01 21:25 RTZ 2 ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</StartDateTime>
+		<StartTestTime>1743531909</StartTestTime>
+		<TestList>
+			<Test>./projects/LongNumber/test/test_operators</Test>
+		</TestList>
+		<Test Status="failed">
+			<Name>test_operators</Name>
+			<Path>./projects/LongNumber/test</Path>
+			<FullName>./projects/LongNumber/test/test_operators</FullName>
+			<FullCommandLine>C:\Users\kameel\RepositoriesAndProjects\kmmsProg\build\projects\LongNumber\test\test_operators.exe</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Exit code 0xc0000374
+</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>3221226356</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.315284</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>C:\Users\kameel\RepositoriesAndProjects\kmmsProg\build\projects\LongNumber\test\test_operators.exe</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value encoding="base64" compression="gzip">eJyNjj0LwkAMQPf+iow6tOjm4uygVCh0KkWu9SyBS67c5fr77QcU66D3tiSPR6rzSg1FYEbu4ASivXh4OUtwnAfwAUVnSZWu1HAxtlFmuWse0FkmzaOrJQ39l7yJ3ix3eaBGu6SCosxhpv7YZ5P98IFICVoetYX79ZcGuwOQ3/+LNuJUG5NdxagwBSPYG2wjXt66UfknDuin8Bsn/4w0====</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Apr 01 21:25 RTZ 2 ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</EndDateTime>
+		<EndTestTime>1743531909</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

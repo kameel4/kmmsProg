@@ -1,0 +1,28 @@
+Start testing: Mar 05 01:09 RTZ 2 (çèìà)
+----------------------------------------------------------
+1/1 Testing: test_linear
+1/1 Test: test_linear
+Command: "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/ProjectSort/test/test_linear.exe"
+Directory: C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/ProjectSort/test
+"test_linear" start time: Mar 05 01:09 RTZ 2 (çèìà)
+Output:
+----------------------------------------------------------
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from VectorsEqual
+[ RUN      ] VectorsEqual.AnyElementsCount
+[       OK ] VectorsEqual.AnyElementsCount (0 ms)
+[----------] 1 test from VectorsEqual (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_linear" end time: Mar 05 01:09 RTZ 2 (çèìà)
+"test_linear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 05 01:09 RTZ 2 (çèìà)

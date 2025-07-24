@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250424-0131-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.31.5"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="DESKTOP-OOQR339"
+	OSRelease=" Professional"
+	OSVersion=" (Build 26100)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="15"
+	ModelID="4"
+	ModelName="AMD Ryzen 7 7840HS w/ Radeon 780M Graphics"
+	ProcessorCacheSize="64"
+	NumberOfLogicalCPU="16"
+	NumberOfPhysicalCPU="8"
+	TotalVirtualMemory="21188"
+	TotalPhysicalMemory="14020"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3792"
+	>
+	<Testing>
+		<StartDateTime>Apr 25 01:30 RTZ 2 ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</StartDateTime>
+		<StartTestTime>1745533859</StartTestTime>
+		<TestList>
+			<Test>./projects/STLContainers/doublyLinkedList/test/doubly_linked_list_tests</Test>
+		</TestList>
+		<Test Status="passed">
+			<Name>doubly_linked_list_tests</Name>
+			<Path>./projects/STLContainers/doublyLinkedList/test</Path>
+			<FullName>./projects/STLContainers/doublyLinkedList/test/doubly_linked_list_tests</FullName>
+			<FullCommandLine>C:\Users\kameel\RepositoriesAndProjects\kmmsProg\build\projects\STLContainers\doublyLinkedList\test\doubly_linked_list_tests.exe</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.270423</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>C:\Users\kameel\RepositoriesAndProjects\kmmsProg\build\projects\STLContainers\doublyLinkedList\test\doubly_linked_list_tests.exe</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value encoding="base64" compression="gzip">eJyVkk+LwjAQxe/5FHPUQ4sLXj0suHhQVlH3VEpJdarBZlLyR9n99KatFLsopO8W8t78MpNJZp1S2DoiQSeYgkVjDRRaSfhoDmCcsBizJOqUwqJUOS/be6Sr0IokkveijVz1z9wrOlcuL39Xgi54XAlj9/6KJbD9+YZG6UtHXFfIKmfO/pVZzg8Xn2m1XgZnYDQBacahON+2zCqNBumAobxeaCDQiL9gTu0dWF6jVFfMCqGbkQdhnjMdbtDntimwyvJyzMLWyCLX0VHdiCXPW/p2O0Fzivsg39/mc7f7mtczeQRjdgcmKPab====</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Apr 25 01:31 RTZ 2 ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</EndDateTime>
+		<EndTestTime>1745533860</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

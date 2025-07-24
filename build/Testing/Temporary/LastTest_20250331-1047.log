@@ -1,0 +1,22 @@
+Start testing: Apr 01 02:55 RTZ 2 (çèìà)
+----------------------------------------------------------
+2/2 Testing: test_operators
+2/2 Test: test_operators
+Command: "C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/LongNumber/test/test_operators.exe"
+Directory: C:/Users/kameel/RepositoriesAndProjects/kmmsProg/build/projects/LongNumber/test
+"test_operators" start time: Apr 01 02:55 RTZ 2 (çèìà)
+Output:
+----------------------------------------------------------
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from LongNumber
+[ RUN      ] LongNumber.test_summation
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Failed.
+"test_operators" end time: Apr 01 02:55 RTZ 2 (çèìà)
+"test_operators" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 01 02:55 RTZ 2 (çèìà)
