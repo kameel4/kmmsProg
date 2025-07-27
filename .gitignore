@@ -5,6 +5,7 @@
 build_*/
 lib/
 .vscode/
+build/
 
 *.exe
 *.ii
