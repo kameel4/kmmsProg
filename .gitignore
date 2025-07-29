@@ -3,9 +3,9 @@
 #
 
 build_*/
-lib/
+**/lib/
 .vscode/
-build/
+**/build/
 
 *.exe
 *.ii
