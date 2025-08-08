@@ -6,6 +6,7 @@ build_*/
 **/lib/
 .vscode/
 **/build/
+yandex_data_structure/05_ctrlx_ctrlv_2/
 
 *.exe
 *.ii
