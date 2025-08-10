@@ -1,0 +1,10 @@
+/
+/bin/
+/home/
+/home/guest/
+/home/guest/homework/
+/home/guest/homework/A/
+/root/
+/root/tests/
+/usr/
+/usr/bin/

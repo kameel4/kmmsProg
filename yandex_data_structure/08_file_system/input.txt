@@ -1,0 +1,6 @@
+/home/guest/homework/A/main.cpp
+/root/test.cpp
+/root/tests/01
+/root/tests/01.a
+/bin/bash
+/usr/bin/perl
