@@ -17,9 +17,9 @@
 
 #include <fstream>
 #include <iostream>
+#include <set>
 #include <stdexcept>
 #include <string>
-#include <set>
 
 int main(){
     std::set<std::string> non_empty_directories;

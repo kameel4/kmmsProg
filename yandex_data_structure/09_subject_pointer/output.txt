@@ -1,0 +1,3 @@
+2 function
+7 limit
+10 derivative function
