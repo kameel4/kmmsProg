@@ -38,7 +38,7 @@ int main(){
             }
         }
 
-        std::cout<< "Задача выполнена. Смотри результат в файле 04_output.txt" << std::endl;
+        std::cout<< "Задача выполнена. Смотри результат в файле output.txt" << std::endl;
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
     }

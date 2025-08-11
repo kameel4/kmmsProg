@@ -58,6 +58,7 @@ int main(){
         }
         first = false;
     }
+    std::cout<< "Задача выполнена. Смотри результат в файле output.txt" << std::endl;
     }catch (const std::exception& e){
         std::cerr << e.what() << std::endl;
     }
