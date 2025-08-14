@@ -1,5 +1,5 @@
 /*
-Петя решил написать свой собственный текстовый редактор
+Петя решил написать свой собственный текстовый редактор.
 На текущей стадии разработки в редакторе есть только возможность загрузить файл и выполнять с ним такие действия:
 переместить курсор на строчку вниз (Down)
 переместить курсор на строчку вверх (Up)
@@ -19,12 +19,12 @@
 
 Напишите программу, которая по заданному файлу и набору команд выводит получившийся файл.
 
-Формат ввода
+Формат ввода:
 Программе на вход подаётся набор строк, разделённых переносом строки. Длина каждой строки не превышает 3000 символов.
 Последняя строка в файле является пустой. Она означает завершение ввода файла. Других пустых строк в файле быть не может.
 После этого и до окончания ввода программе подаются команды Down, Up, Ctrl+X, Ctrl+V.
 
-Формат вывода
+Формат вывода:
 Выведите получившийся файл построчно.
 */
 
@@ -34,52 +34,65 @@
 #include <stdexcept>
 #include <string>
 
-int main(){
-    std::list<std::string> file_txt;
-
+int main() {
     try {
+		/* 
+			Я бы разбил текст и список действий на два разных файла: 
+			text_file.txt, actions_file.txt.
+			
+			Тогда код считывания данных задачи был бы более понятен
+			и с именованиями переменных было бы полегче.
+			+ Логичнее: разные виды данных приходят из разных источников.
+		*/
         std::ifstream in("input.txt");
 
-        if (!in.is_open()){
+        if (!in.is_open()) {
             throw std::runtime_error("Файл входных данных input.txt отсутсвует!");
         }
 
-        std::string data;
-        while (std::getline(in, data) && data != ""){
-            file_txt.push_back(data);
+		std::list<std::string> input_text;
+        std::string line;
+        while (std::getline(in, line) && !line.empty()) {
+            input_text.push_back(line);
         }
 
+		// action чаще употребляется и + короче
         std::string operation;
         std::string clipboard = "";
-        auto pointed_line = file_txt.begin();
-        while (std::getline(in, operation))
-        {
-            if (operation == "Down" && pointed_line != --file_txt.end()){
-                pointed_line++;
-            }else if (operation == "Up" && pointed_line != file_txt.begin()){
-                pointed_line--;
-            }else if (operation == "Ctrl+X" && (!(*pointed_line).empty())){
-                clipboard = *pointed_line;
+		// Это итератор и в названии это часто отражают.
+        auto pointed_line_iter = input_text.begin();
+		const std::string down_operation = "Down";
+		const std::string up_operation = "Up";
+		const std::string cut_operation = "Ctrl+X";
+		const std::string paste_operation = "Ctrl+V";
+        while (std::getline(in, operation)) {
+            if (operation == down_operation && pointed_line_iter != --input_text.end()) {
+                pointed_line_iter++;
+            } else if (operation == up_operation && pointed_line_iter != input_text.begin()) {
+                pointed_line_iter--;
+            } else if (operation == cut_operation && (!(*pointed_line_iter).empty())) {
+                clipboard = *pointed_line_iter;
                 
                 // Избежание инвалидации, в случае удаления последнего элемента
-                if (pointed_line == --file_txt.end()){
-                    file_txt.erase(pointed_line);
-                    file_txt.push_back("");
-                    pointed_line = --file_txt.end();
-                }else{
-                    pointed_line = file_txt.erase(pointed_line);
+                if (pointed_line_iter == --input_text.end()) {
+                    input_text.erase(pointed_line_iter);
+					// Должно быть объяснение: "В чём смысл добавки пустого символа?"
+                    input_text.push_back("");
+                    pointed_line_iter = --input_text.end();
+                } else {
+                    pointed_line_iter = input_text.erase(pointed_line_iter);
                 }
-            }else if (operation == "Ctrl+V" && !clipboard.empty()){
-                file_txt.insert(pointed_line, clipboard);
+            } else if (operation == paste_operation && !clipboard.empty()) {
+                input_text.insert(pointed_line_iter, clipboard);
             }
         }
 
         std::ofstream out("output.txt");
-        for (std::string output_string: file_txt){
-            if (output_string !="") out << output_string << std::endl;
+        for (std::string output_string: input_text) {
+            if (!output_string.empty()) out << output_string << std::endl;
         }
 
-        std::cout<< "Задача выполнена. Смотри результат в файле 04_output.txt" << std::endl;
+        std::cout << "Задача выполнена. Смотри результат в файле 04_output.txt" << std::endl;
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
     }
