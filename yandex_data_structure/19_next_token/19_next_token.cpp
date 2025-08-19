@@ -39,6 +39,7 @@ bye
 bool NextToken(std::string_view& sv, const char delimiter, std::string_view& token){
     if (sv.empty()) return false;
 
+    // поиск первого символа - не разделителя
     int last_delimiter_index = 0;
     for (int i = 0; i < sv.size(); i++){
         if (sv[i] != delimiter){
@@ -47,6 +48,7 @@ bool NextToken(std::string_view& sv, const char delimiter, std::string_view& tok
         }
     }
 
+    // случай в котором вся строка состоит из какого-то числа символов разделителей
     if (last_delimiter_index == 0 && sv[0] == delimiter) return false;
 
     token = sv.substr(last_delimiter_index,
@@ -55,19 +57,4 @@ bool NextToken(std::string_view& sv, const char delimiter, std::string_view& tok
     int new_delimiter_index = last_delimiter_index + token.size();
     sv = sv.substr(new_delimiter_index, sv.size());
     return true;
-}
-
-int main() {
-    std::string_view sv = "         Hello    w  and good      bye";
-
-    const char delimiter = ' ';
-    std::string_view token;
-    std::ofstream out("output.txt");
-
-    // Делим строку на токены по разделителю и перебираем эти токены:
-    while (NextToken(sv, delimiter, token)) {
-        // обрабатываем очередной token
-        // например, печатаем его на экране:
-        out << token << "\n";
-    }
 }
