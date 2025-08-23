@@ -2,11 +2,14 @@
 #define AREA_HEIGHT 25
 
 #include <algorithm>
+#include <conio.h>
 #include <iostream>
 #include <string>
 
+
 void init();
 void init_racket();
+void move_racket(int x);
 void put_racket();
 void show();
 struct Tracket{
@@ -19,12 +22,22 @@ char playing_area[AREA_HEIGHT][AREA_WIDTH + 1];
 Tracket racket;
 
 int main(){
-    init();
-
+    char pressed_key;
     init_racket();
-    put_racket();
 
-    show();
+    do {
+        system("cls");
+        init();
+        put_racket();
+        show();
+
+        pressed_key = getch();
+        if (pressed_key == 'a') move_racket(racket.x - 1);
+        if (pressed_key == 'd') move_racket(racket.x + 1);
+
+    } while (pressed_key != 'q');
+    
+
 }
 
 void init(){
@@ -52,6 +65,14 @@ void init_racket(){
     // размещаем ракетку в центре поля, в самом низу
     racket.x = (AREA_WIDTH - racket.width) / 2;
     racket.y = AREA_HEIGHT - 1;
+}
+
+void move_racket(int x){
+    racket.x = x;
+    // проверка попадания ракетки за границы поля
+    if (racket.x < 1) racket.x = 1;
+    if (racket.x + racket.width >= AREA_WIDTH) racket.x = AREA_WIDTH - 1 - racket.width;
+
 }
 
 void put_racket(){
