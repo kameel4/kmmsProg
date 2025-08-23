@@ -2,40 +2,55 @@
 #define AREA_HEIGHT 25
 
 #include <algorithm>
-#include <conio.h>
+#include <cmath>
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 
 void init();
+void init_ball();
 void init_racket();
+void move_ball(int x, int y);
 void move_racket(int x);
+void put_ball();
 void put_racket();
+void set_cursor(int x, int y);
 void show();
-struct Tracket{
+struct TRacket{
     int x, y;
     int width;
 };
 
+struct TBall{
+    float x, y;
+    int int_x, int_y;
+};
+
 // + 1 - это выделение места для символа конца строки
 char playing_area[AREA_HEIGHT][AREA_WIDTH + 1];
-Tracket racket;
+TRacket racket;
+TBall ball;
 
 int main(){
     char pressed_key;
+    init_ball();
     init_racket();
 
     do {
-        system("cls");
+        set_cursor(0, 0);
         init();
+        put_ball();
         put_racket();
         show();
 
-        pressed_key = getch();
-        if (pressed_key == 'a') move_racket(racket.x - 1);
-        if (pressed_key == 'd') move_racket(racket.x + 1);
+        if (GetKeyState('A') < 0) move_racket(racket.x - 1);
+        if (GetKeyState('D') < 0) move_racket(racket.x + 1);
+        move_ball(racket.x + racket.width / 2, racket.y - 1);
 
-    } while (pressed_key != 'q');
+        Sleep(10);
+
+    } while (GetKeyState(VK_ESCAPE) >= 0);
     
 
 }
@@ -59,12 +74,24 @@ void init(){
     }
 }
 
+void init_ball(){
+    // размещаем шарик в левом верхнем углу
+    move_ball(2, 2);
+}
+
 void init_racket(){
     racket.width = 7;
 
     // размещаем ракетку в центре поля, в самом низу
     racket.x = (AREA_WIDTH - racket.width) / 2;
     racket.y = AREA_HEIGHT - 1;
+}
+
+void move_ball(int x, int y){
+    ball.x = x;
+    ball.y = y;
+    ball.int_x = (int)round(x);
+    ball.int_y = (int)round(y);
 }
 
 void move_racket(int x){
@@ -75,15 +102,30 @@ void move_racket(int x){
 
 }
 
+void put_ball(){    
+    playing_area[ball.int_y][ball.int_x] = '*';
+}
+
 void put_racket(){
     for (int i = racket.x; i < racket.x + racket.width; i++){
         playing_area[racket.y][i] = '@';
     }
 }
 
+void set_cursor(int x, int y){
+    COORD coordinates;
+    coordinates.X = x;
+    coordinates.Y = y;
+
+    // Здесь первый аргумент - это указатель на окно вывода,
+    // который мы получаем через стандартный геттер
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordinates);
+}
+
 void show(){
     for (int i = 0; i < AREA_HEIGHT; i++){
-        std::cout << playing_area[i] << std::endl;
+        std::cout << playing_area[i];
+        if (i < AREA_HEIGHT - 1) std::cout << std::endl;
     }
 }
 
