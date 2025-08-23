@@ -1,5 +1,5 @@
-#define AREA_WIDTH 65
 #define AREA_HEIGHT 25
+#define AREA_WIDTH 65
 
 #include <algorithm>
 #include <cmath>
@@ -18,6 +18,7 @@ void put_ball();
 void put_racket();
 void set_cursor(int x, int y);
 void show();
+
 struct TRacket{
     int x, y;
     int width;
@@ -33,6 +34,10 @@ struct TBall{
 
 // + 1 - это выделение места для символа конца строки
 char playing_area[AREA_HEIGHT][AREA_WIDTH + 1];
+char wall_symbol = '#';
+char racket_symbol = '@';
+int score = 0;
+int max_score = 0;
 TRacket racket;
 TBall ball;
 
@@ -46,7 +51,11 @@ int main(){
         set_cursor(0, 0);
 
         if (ball_moving_itself) auto_move_ball();
-        if (ball.int_y > AREA_HEIGHT) ball_moving_itself = false;
+        if (ball.int_y > AREA_HEIGHT){
+            ball_moving_itself = false;
+            max_score = std::max(max_score, score);
+            score = 0;
+        } 
 
         init();
         put_ball();
@@ -78,8 +87,11 @@ void auto_move_ball(){
     );
 
     // Проверка на столкновение со стеной либо с ракеткой
-    if (playing_area[ball.int_y][ball.int_x] == '#' || 
-        playing_area[ball.int_y][ball.int_x] == '@'){
+    if (playing_area[ball.int_y][ball.int_x] == wall_symbol || 
+        playing_area[ball.int_y][ball.int_x] == racket_symbol){
+
+        if (playing_area[ball.int_y][ball.int_x] == racket_symbol) score++;
+
         // Случай когда изменились обе координаты    
         if (ball.int_x != old_ball_state.int_x && ball.int_y != old_ball_state.int_y){
             // Случай, когда шар оказался в углу
@@ -87,7 +99,7 @@ void auto_move_ball(){
                 old_ball_state.alpha += M_PI;
             // Случай, когда шар у стены. Отражаем либо по вертикали, либо по горизонтали
             }else{
-                if (playing_area[old_ball_state.int_y][ball.int_x] == '#'){
+                if (playing_area[old_ball_state.int_y][ball.int_x] == wall_symbol){
                     old_ball_state.alpha = (2 * M_PI - old_ball_state.alpha) + M_PI;
                 }else{
                     old_ball_state.alpha = (2 * M_PI - old_ball_state.alpha);
@@ -110,7 +122,7 @@ void auto_move_ball(){
 
 void init(){
     for (int i = 0; i < AREA_WIDTH; i++){
-        playing_area[0][i] = '#';
+        playing_area[0][i] = wall_symbol;
 
         // искусственно добавляем символ конца строки для корректного вывода
         playing_area[0][AREA_WIDTH] = '\0';
@@ -164,7 +176,7 @@ void put_ball(){
 
 void put_racket(){
     for (int i = racket.x; i < racket.x + racket.width; i++){
-        playing_area[racket.y][i] = '@';
+        playing_area[racket.y][i] = racket_symbol;
     }
 }
 
@@ -181,6 +193,10 @@ void set_cursor(int x, int y){
 void show(){
     for (int i = 0; i < AREA_HEIGHT; i++){
         std::cout << playing_area[i];
+
+        if (i == 3) std::cout << "      score:          " << score;
+        if (i == 4) std::cout << "      max score:      " << max_score;
+
         if (i < AREA_HEIGHT - 1) std::cout << std::endl;
     }
 }
