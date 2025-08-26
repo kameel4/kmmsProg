@@ -1,6 +1,3 @@
-#define AREA_HEIGHT 25
-#define AREA_WIDTH 65
-
 #include <algorithm>
 #include <cmath>
 #include <iostream>
@@ -9,7 +6,7 @@
 
 
 void auto_move_ball();
-void init();
+void init(int level);
 void init_ball();
 void init_racket();
 void move_ball(float x, float y);
@@ -18,6 +15,7 @@ void put_ball();
 void put_racket();
 void set_cursor(int x, int y);
 void show();
+void show_preview();
 
 struct TRacket{
     int x, y;
@@ -32,12 +30,18 @@ struct TBall{
     float speed;
 };
 
+const int AREA_HEIGHT = 25;
+const int AREA_WIDTH = 65;
+const char RACKET_SYMBOL = '@';
+const char WALL_SYMBOL = '#';
+
+int level = 1;
+int max_score = 0;
+int score = 0;
+
+
 // + 1 - это выделение места для символа конца строки
 char playing_area[AREA_HEIGHT][AREA_WIDTH + 1];
-char wall_symbol = '#';
-char racket_symbol = '@';
-int score = 0;
-int max_score = 0;
 TRacket racket;
 TBall ball;
 
@@ -47,6 +51,7 @@ int main(){
     init_ball();
     init_racket();
 
+    show_preview();
     do {
         set_cursor(0, 0);
 
@@ -55,9 +60,16 @@ int main(){
             ball_moving_itself = false;
             max_score = std::max(max_score, score);
             score = 0;
-        } 
+        }
+        if (score > 3){
+            level++;
+            ball_moving_itself = false;
+            max_score = 0;
+            score = 0;
+            show_preview();
+        }
 
-        init();
+        init(level);
         put_ball();
         put_racket();
         show();
@@ -87,10 +99,10 @@ void auto_move_ball(){
     );
 
     // Проверка на столкновение со стеной либо с ракеткой
-    if (playing_area[ball.int_y][ball.int_x] == wall_symbol || 
-        playing_area[ball.int_y][ball.int_x] == racket_symbol){
+    if (playing_area[ball.int_y][ball.int_x] == WALL_SYMBOL || 
+        playing_area[ball.int_y][ball.int_x] == RACKET_SYMBOL){
 
-        if (playing_area[ball.int_y][ball.int_x] == racket_symbol) score++;
+        if (playing_area[ball.int_y][ball.int_x] == RACKET_SYMBOL) score++;
 
         // Случай когда изменились обе координаты    
         if (ball.int_x != old_ball_state.int_x && ball.int_y != old_ball_state.int_y){
@@ -99,7 +111,7 @@ void auto_move_ball(){
                 old_ball_state.alpha += M_PI;
             // Случай, когда шар у стены. Отражаем либо по вертикали, либо по горизонтали
             }else{
-                if (playing_area[old_ball_state.int_y][ball.int_x] == wall_symbol){
+                if (playing_area[old_ball_state.int_y][ball.int_x] == WALL_SYMBOL){
                     old_ball_state.alpha = (2 * M_PI - old_ball_state.alpha) + M_PI;
                 }else{
                     old_ball_state.alpha = (2 * M_PI - old_ball_state.alpha);
@@ -120,9 +132,9 @@ void auto_move_ball(){
     }
 }
 
-void init(){
+void init(int level){
     for (int i = 0; i < AREA_WIDTH; i++){
-        playing_area[0][i] = wall_symbol;
+        playing_area[0][i] = WALL_SYMBOL;
 
         // искусственно добавляем символ конца строки для корректного вывода
         playing_area[0][AREA_WIDTH] = '\0';
@@ -137,6 +149,20 @@ void init(){
     for (int i = 2; i < AREA_HEIGHT; i++){
         std::copy(playing_area[1], playing_area[1] + AREA_WIDTH + 1, playing_area[i]);
     }
+
+    if (level == 2){
+        for (int i = 10; i < AREA_HEIGHT; i++){
+            playing_area[10][i] = WALL_SYMBOL;
+        }
+    }
+
+    if (level == 3){
+        for (int j = 1; j < 10; j++){
+            for (int i = 1; i < 65; i +=7){
+                playing_area[j][i] = WALL_SYMBOL;
+            }
+        }
+    }
 }
 
 void init_ball(){
@@ -148,7 +174,7 @@ void init_ball(){
 }
 
 void init_racket(){
-    racket.width = 7;
+    racket.width = 12;
 
     // размещаем ракетку в центре поля, в самом низу
     racket.x = (AREA_WIDTH - racket.width) / 2;
@@ -176,7 +202,7 @@ void put_ball(){
 
 void put_racket(){
     for (int i = racket.x; i < racket.x + racket.width; i++){
-        playing_area[racket.y][i] = racket_symbol;
+        playing_area[racket.y][i] = RACKET_SYMBOL;
     }
 }
 
@@ -194,6 +220,7 @@ void show(){
     for (int i = 0; i < AREA_HEIGHT; i++){
         std::cout << playing_area[i];
 
+        if (i == 2) std::cout << "      level:          " << level;
         if (i == 3) std::cout << "      score:          " << score;
         if (i == 4) std::cout << "      max score:      " << max_score;
 
@@ -201,3 +228,10 @@ void show(){
     }
 }
 
+void show_preview(){
+    system("cls");
+    for (int i = 0; i < 12; i++) std::cout << std::endl;
+    std::cout << "\t\t\t\t      LEVEL   " << level;
+    Sleep(1000);
+    system("cls");
+}
