@@ -18,13 +18,15 @@ typedef struct SObject{
 
 char map[mapHeight][mapWidth+1];
 TObject mario;
-int brickLength;
 TObject *brick;
+int brickLength;
+int level = 1;
+
 
 void ClearMap()
 {
     for (int i = 0; i < mapWidth; i++)
-        map[0][i] = '.';
+        map[0][i] = ' ';
     map[0][mapWidth] = '\0';
     for (int j = 1; j < mapHeight; j++)
         sprintf(map[j], map[0]);
@@ -34,7 +36,7 @@ void ShowMap()
 {
     map[mapHeight - 1][mapWidth - 1] = '\0';
     for (int j = 0; j < mapHeight; j++)
-        std::cout << map[j] << std::endl;
+        std::cout << map[j];
 }
 
 void SetObjectPos(TObject *obj, float xPos, float yPos){
@@ -52,6 +54,8 @@ void InitObject(TObject *obj, float xPos, float yPos, float oWidth, float oHeigh
 
 bool IsCollision(TObject o1, TObject o2);
 
+void CreateLevel(int lvl);
+
 void VertMoveObject(TObject *obj)
 {
     (*obj).IsFly = true;
@@ -64,6 +68,13 @@ void VertMoveObject(TObject *obj)
             (*obj).y -= (*obj).vertSpeed;
             (*obj).vertSpeed = 0;
             (*obj).IsFly = FALSE;
+            if (brick[i].cType == '+')
+            {   
+                level++;
+                if (level > 2) level = 1;
+                CreateLevel(level);
+                Sleep(1000);
+            }
             break;
         }
     }
@@ -113,17 +124,33 @@ bool IsCollision(TObject o1, TObject o2)
              ((o1.y + o1.height) > o2.y) && (o1.y) < (o2.y + o2.width) );
 }
 
-void CreateLevel()
+void CreateLevel(int lvl)
 {
     InitObject(&mario, 39, 10, 3, 3, '@');
 
-    brickLength = 5;
-    brick = new TObject[brickLength];
-    InitObject(brick + 0, 20, 20, 40, 5, '#');
-    InitObject(brick + 1, 60, 15, 10, 10, '#');
-    InitObject(brick + 2, 80, 20, 20, 5, '#');
-    InitObject(brick + 3, 120, 15, 10, 10, '#');
-    InitObject(brick + 4, 150, 20, 40, 5, '#');
+    if (lvl == 1)
+    {
+        brickLength = 6;
+        brick = (TObject*)malloc(sizeof(*brick) * brickLength );
+        InitObject(brick + 0, 20, 20, 40, 5, '#');
+        InitObject(brick + 1, 60, 15, 10, 10, '#');
+        InitObject(brick + 2, 80, 20, 20, 5, '#');
+        InitObject(brick + 3, 120, 15, 10, 10, '#');
+        InitObject(brick + 4, 150, 20, 40, 5, '#');
+        InitObject(brick + 5, 210, 15, 10, 10, '+');   
+    }
+    if (lvl == 2)
+    {
+        brickLength = 4;
+        brick = (TObject*)malloc(sizeof(*brick) * brickLength );
+        InitObject(brick + 0, 20, 20, 40, 5, '#');
+        InitObject(brick + 1, 80, 20, 15, 5, '#');
+        InitObject(brick + 2, 120, 15, 15, 10, '#');
+        InitObject(brick + 3, 160, 10, 15, 15, '+');
+    }
+
+    
+
 }
 
 void hide_cursor(){
@@ -138,23 +165,24 @@ void hide_cursor(){
 int main()
 {   
     hide_cursor();
-    CreateLevel();
+    CreateLevel(level);
+    system("color 9F");
 
     do
     {   
         ClearMap();
 
+
         if (mario.IsFly == false && GetKeyState(VK_SPACE) < 0) mario.vertSpeed = -1;
         if (GetKeyState('A') < 0) HorizonMoveMap(1);
         if (GetKeyState('D') < 0) HorizonMoveMap(-1);
 
-        if (mario.y > mapHeight) CreateLevel();
+        if (mario.y > mapHeight) CreateLevel(level);
  
         VertMoveObject(&mario);
         for (int i = 0; i < brickLength; i++)
             PutObjectOnMap(brick[i]);
         PutObjectOnMap(mario);
-
         setCur(0, 0);
         ShowMap();
 
