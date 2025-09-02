@@ -105,17 +105,26 @@ void MarioCollision()
     for (int i = 0; i < movingLength; i++)
         if (IsCollision(mario, moving[i]))
         {
-            if ( (mario.IsFly == TRUE)
-            && (mario.vertSpeed > 0)
-            && (mario.y + mario.height < moving[i].y + moving[i].height * 0.5)
-            )
+            if (moving[i].cType == 'o')
+            {
+                if ( (mario.IsFly == TRUE)
+                    && (mario.vertSpeed > 0)
+                    && (mario.y + mario.height < moving[i].y + moving[i].height * 0.5)
+                    )
+                {
+                    DeleteMoving(i);
+                    i--;
+                    continue;
+                }
+                else
+                    CreateLevel(level);
+            }
+            if (moving[i].cType == '$')
             {
                 DeleteMoving(i);
                 i--;
                 continue;
             }
-            else
-                CreateLevel(level);
         }
 }
 
@@ -207,13 +216,16 @@ TObject *GetNewMoving()
 }
 
 void CreateLevel(int lvl)
-{
+{   
+    brickLength =0;
+    brick = (TObject*)realloc (brick, 0);
+    movingLength = 0;
+    moving = (TObject*)realloc( moving, 0);
     InitObject(&mario, 39, 10, 3, 3, '@');
 
 
     if (lvl == 1)
     {
-        brickLength = 0;
         InitObject(GetNewBrick(), 20, 20, 40, 5, '#');
             InitObject(GetNewBrick(), 30, 10, 5, 3, '?');
             InitObject(GetNewBrick(), 50, 10, 5, 3, '?');
@@ -225,14 +237,13 @@ void CreateLevel(int lvl)
     }
     if (lvl == 2)
     {
-        brickLength = 0;
         InitObject(GetNewBrick(), 20, 20, 40, 5, '#');
         InitObject(GetNewBrick(), 60, 15, 10, 10, '#');
         InitObject(GetNewBrick(), 80, 20, 20, 5, '#');
         InitObject(GetNewBrick(), 120, 15, 10, 10, '#');
         InitObject(GetNewBrick(), 150, 20, 40, 5, '#');
-        InitObject(GetNewBrick(), 210, 15, 10, 10, '+'); 
-        movingLength = 0;
+        InitObject(GetNewBrick(), 210, 15, 10, 10, '+');
+
         InitObject(GetNewMoving(), 25, 10, 3, 2, 'o');
         InitObject(GetNewMoving(), 80, 10, 3, 2, 'o');
         InitObject(GetNewMoving(), 65, 10, 3, 2, 'o');
@@ -242,12 +253,11 @@ void CreateLevel(int lvl)
     }
     if (lvl == 3)
     {
-        brickLength = 0;
         InitObject(GetNewBrick(), 20, 20, 40, 5, '#');
         InitObject(GetNewBrick(), 80, 20, 15, 5, '#');
         InitObject(GetNewBrick(), 120, 15, 15, 10, '#');
         InitObject(GetNewBrick(), 160, 10, 15, 15, '+');
-        movingLength = 0;
+
         InitObject(GetNewMoving(), 25, 10, 3, 2, 'o');
         InitObject(GetNewMoving(), 50, 10, 3, 2, 'o');
         InitObject(GetNewMoving(), 80, 10, 3, 2, 'o');
