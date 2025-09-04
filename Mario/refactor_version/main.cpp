@@ -71,6 +71,7 @@ int main(){
              mario, bricks, bricks_length, moving, moving_length);}
         if (GetKeyState('D') < 0){horizontally_move_map(-1,
              mario, bricks, bricks_length, moving, moving_length);}
+        // Обработка выпадения игрока за карту
         if (mario.y > map_height){
             player_death(level);
             create_level(level, mario, bricks_length, bricks, moving_length, moving,
@@ -200,6 +201,7 @@ Object *get_new_moving(int &moving_length, Object *&moving){
     return moving + moving_length - 1;
 }
 
+// Метод для исправления мерцания курсора в терминале
 void hide_cursor(){
     void* handle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO structCursorInfo;
@@ -333,6 +335,8 @@ void put_score_on_map(char map[map_height][map_width + 1], int &score){
     }
 }
 
+// Метод ставит курсор в начало окна ввода, чтобы новый кадр обновлял старые символы,
+// а не отрисовывал каждый кадр ниже предыдущего
 void set_cursor_pos(const int x, const int y){
     COORD coord;
     coord.X = x;
@@ -345,6 +349,7 @@ void set_object_pos(Object *object, const float x_pos, const float y_pos){
     (*object).y = y_pos;
 }
 
+// Отрисовка заполненного кадра
 void show_map(char map[map_height][map_width + 1]){
     map[map_height - 1][map_width - 1] = '\0';
     for (int j = 0; j < map_height; j++)
@@ -372,6 +377,8 @@ void vertically_move_object(Object *object, Object& mario, Object *&bricks, int 
             (*object).vertical_speed = 0;
             (*object).is_flying = false;
             
+            // Символ '+' - обозначает последний остров уровня, необходимый для
+            // перехода на следующий уровень
             if (bricks[i].char_type == '+'){   
                 level++;
                 if (level > max_level) level = 1;
