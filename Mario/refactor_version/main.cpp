@@ -262,7 +262,7 @@ void check_mario_collisions(
 					score);
 			}
 			
-			if (movings[i].ctype = MONEY) {
+			if (movings[i].ctype == MONEY) {
 				score += 100;
 				delete_movings(i, movings, movings_count);
 				i--;

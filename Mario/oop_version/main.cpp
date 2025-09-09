@@ -38,8 +38,12 @@ class Object{
 			const float _x = 0, const float _y = 0,
 			const float _width = 1, const float _height = 1, 
 			const char _ctype = '%')
-			: width(_width), height(_height) {}
-		Object(const Object &other) : width(other.width), height(other.height) {}
+			: width(_width), height(_height) {x = _x, y = _y, ctype = _ctype;
+			horiz_speed = 0.2; vert_speed = 0; is_fly = false;}
+		Object(const Object &other) : width(other.width), height(other.height) {
+			x = other.x; y = other.y; ctype = other.ctype;
+			horiz_speed = other.horiz_speed; vert_speed = other.horiz_speed; is_fly = other.is_fly;
+		}
 
 		
 		void set_x(const int _x);
@@ -240,7 +244,7 @@ int main() {
 		Sleep(10);
 	} while (GetKeyState(exit_key) >= 0);
 	
-	map.~Map();
+	// map.~Map();
 	
 	delete [] bricks;
 	delete [] movings;
@@ -331,7 +335,7 @@ void Object::move_obj_vertically(
 					new (&temp[i]) Object(movings[i]);
 				}
 				delete [] movings;
-				movings = temp;
+				movings = temp; 
 
 				new (&movings[movings_count - 1]) Object(bricks[i].x, bricks[i].y - 3, 3, 2, '$'); 
 				
@@ -377,13 +381,14 @@ void Object::move_obj_horizontally(
 	
 	for (int i = 0; i < bricks_count; i++) {
 		if (is_collision(bricks[i])) {
+			ctype == '0' ? ctype = 'o' : ctype = '0';
 			x -= horiz_speed;
-			horiz_speed = -horiz_speed;
+			this->set_horizspeed(-horiz_speed);
 			return;
 		}
 	}
 	
-	if (ctype == ENEMY) {
+	if (ctype == ENEMY || ctype == '0') {
 		Object tmp = *this;
 		tmp.move_obj_vertically( 
 			mario, 
@@ -392,6 +397,7 @@ void Object::move_obj_horizontally(
 			current_level, max_level, 
 			score, map);
 		if (tmp.is_fly == true) {
+			ctype == '0' ? ctype = 'o' : ctype = '0';
 			x -= horiz_speed;
 			horiz_speed = -horiz_speed;
 		}
@@ -426,7 +432,7 @@ void Object::check_mario_collisions(
 					score);
 			}
 			
-			if (movings[i].ctype = MONEY) {
+			if (movings[i].ctype == MONEY) {
 				score += 100;
 				delete_movings(i, movings, movings_count);
 				i--;
@@ -494,7 +500,7 @@ void Map::clear_map() {
 	}
 	map[0][map_width] = '\0';
 	for (int j = 1; j < map_height; j++) {
-		sprintf(map[j], map[0]);
+		std::copy(map[0], map[0] + map_width + 1, map[j]);
 	}
 }
 
@@ -506,7 +512,7 @@ void Map::put_obj_on_map(Object *obj) {
 	
 	for (int i = ix; i < ix + iwidth; i++) {
 		for (int j = iy; j < iy + iheight; j++) {
-			if (obj->is_on_map(this)) {
+				if (i >= 0 && i < map_width && j >= 0 && j < map_height) {
 				map[j][i] = obj->get_ctype();
 			}
 		}
